@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>客户信息显示</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+    <!--  PAGINATION plugin -->
+    <link rel="stylesheet" type="text/css" href="common/path/css/jquery.bs_pagination.min.css">
+    <script type="text/javascript" src="common/path/js/jquery.bs_pagination.min.js"></script>
+    <script type="text/javascript" src="common/path/js/localization/en.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">客户姓名:</label>
+                    <input type="text" id="query-username" class="form-control" placeholder="请输入姓名">
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">客户性别:</label>
+                    <select id="query-gender" class="form-control">
+                        <option value="">请选择性别</option>
+                        <option value="1">男</option>
+                        <option value="0">女</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">客户地址:</label>
+                    <input type="text" id="query-address" class="form-control" placeholder="请输入客户居住地址">
+                </div>
+            </div>
+            <div class="row col-xs-12" style="margin-top:20px">
+                <div class="col-xs-6 text-left">
+                    <button type="button" id="btn-delete" class="btn layui-btn layui-btn-danger">删除</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <button type="button" id="query-action-btn" class="btn btn-primary">查询</button>
+                    <button type="button" id="query-action-btn-all" class="btn btn-primary">查询全部</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <caption>客户信息查询</caption>
+        <thead>
+        <tr class="">
+            <th width="40" class="text-center"><input type="checkbox" value="" id="all"></th>
+            <th class="col-sm-1">姓名</th>
+            <th class="col-sm-1">性别</th>
+            <th class="col-sm-1">年龄</th>
+            <th class="col-sm-1">电话</th>
+            <th class="col-sm-2">邮箱</th>
+            <th class="col-sm-2">地址</th>
+            <th class="col-sm-2">开户行</th>
+            <th class="col-sm-2">银行账号</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div id="query-page"></div>
+
+</div>
+<script type="text/javascript" src="js/Customer.js"></script>
+</body>
+</html>

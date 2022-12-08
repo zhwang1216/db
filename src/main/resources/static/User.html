@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息展示</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- 加载js文件-->
+    <script type="text/javascript" src="common/layui/layui.js"></script>
+    <script type="text/javascript" src="js/larry.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script src="common/bootstrap/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 30px;
+            font-size: 15px;
+        }
+        tr {
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 style="font-size: 20px; text-align: center;">查看个人信息</h2>
+            <hr>
+            </br>
+        </div>
+        <!-- /header -->
+        <form id="form-change" class="form-horizontal " action="" method="post" style="margin-top: 30px;">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">用户名:</label>
+                    <div class="col-sm-8">
+                        <input id="uid" name="uid" type="hidden">
+                        <input type="text" id="username" class="form-control" name="username"  disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">年龄:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="age" class="form-control" name="age" disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">电话:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="phone" class="form-control" name="phone"  disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">邮箱:</label>
+                    <div class="col-sm-8">
+                        <input type="email" id="email" class="form-control" name="email" disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;" >地址:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="address" class="form-control" name="address" disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" disabled="disabled" style="text-align: right;">开户行:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="cardBank" class="form-control" name="cardBank"  disabled="disabled" style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">银行账号:</label>
+                    <div class="col-sm-8">
+                        <input type="text" id="card" class="form-control" name="card"  disabled="disabled"style="height:40px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label" style="text-align: right;">头像:</label>
+                    <div class="col-sm-8">
+                        <img alt="默认头像" name="avatar" src="images/default.jpg" width="200px;">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/User.js"></script>
+</body>
+</html>

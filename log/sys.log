@@ -1,0 +1,488 @@
+2022-05-07 08:43:27,850 INFO (StartupInfoLogger.java:50)- Starting DiemsApplication on ZhwangMac.local with PID 1242 (started by Zhwang in /Users/zhwang/论文/Demo/Drug-sales-and-storage)
+2022-05-07 08:43:27,881 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2022-05-07 08:43:27,882 INFO (SpringApplication.java:679)- The following profiles are active: dev
+2022-05-07 08:43:31,351 INFO (StartupInfoLogger.java:59)- Started DiemsApplication in 4.293 seconds (JVM running for 6.655)
+2022-05-07 08:43:54,528 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, phone, password, salt, avatar, is_delete isDelete from t_customer where phone = ? 
+2022-05-07 08:43:54,553 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15211111111(String)
+2022-05-07 08:43:54,616 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:43:55,432 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 08:43:55,433 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:43:55,439 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 08:43:55,440 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:43:55,441 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:43:55,442 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 08:43:55,443 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:43:55,443 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 08:43:55,444 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:43:55,454 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:43:55,457 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:43:55,498 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:43:55,499 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:43:55,503 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:43:55,521 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:43:58,846 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 08:43:58,847 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15(Integer)
+2022-05-07 08:43:58,855 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:00,392 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 08:44:00,393 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15(Integer)
+2022-05-07 08:44:00,401 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:07,119 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, phone, is_delete isDelete from t_customer where phone = ? and is_delete != 1 
+2022-05-07 08:44:07,120 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15211111111(String)
+2022-05-07 08:44:07,121 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:07,122 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, email, is_delete isDelete from t_customer where email = ? and is_delete != 1 
+2022-05-07 08:44:07,123 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15211111111@163.com(String)
+2022-05-07 08:44:07,129 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:07,131 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: update t_customer set username=?, age=?, phone=?, email=?, address=?, cardBank=?, card=?, modified_user=?, modified_time=? where uid = ? 
+2022-05-07 08:44:07,136 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 数据1(String), 23(Integer), 15211111111(String), 15211111111@163.com(String), (String), (String), (String), 张三(String), 2022-05-07 08:44:07.13(Timestamp), 15(Integer)
+2022-05-07 08:44:07,153 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 08:44:11,170 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 08:44:11,171 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:11,172 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 limit ? , ? 
+2022-05-07 08:44:11,172 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 08:44:11,179 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 6
+2022-05-07 08:44:11,183 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 08:44:11,184 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 
+2022-05-07 08:44:11,185 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:11,187 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:29,634 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 and t_drug.category_id like '%1%' limit ? , ? 
+2022-05-07 08:44:29,634 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 08:44:29,637 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2022-05-07 08:44:29,638 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 and category_id like '%1%' 
+2022-05-07 08:44:29,639 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:29,641 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:44:49,048 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:44:49,048 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:49,051 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:44:49,840 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:44:49,841 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:49,843 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:44:50,427 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:44:50,428 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:50,430 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:44:50,614 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:44:50,615 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:44:50,616 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:45:13,642 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 08:45:13,643 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 08:45:13,654 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,300 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 08:45:20,300 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 08:45:20,302 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,845 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 08:45:20,845 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:45:20,847 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,848 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 08:45:20,848 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:45:20,851 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,859 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 08:45:20,860 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:45:20,862 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,864 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 08:45:20,865 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:45:20,867 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:45:20,883 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:45:20,884 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:45:20,886 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 08:46:49,508 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 08:46:49,511 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 08:46:49,514 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:46:50,239 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 08:46:50,239 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:46:50,241 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 08:46:50,242 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:46:50,242 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:46:50,244 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:46:50,251 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 08:46:50,251 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 08:46:50,252 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:46:50,252 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:46:50,254 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:46:50,255 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 08:46:50,256 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 08:46:50,256 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 08:46:50,259 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 10:21:00,894 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, phone, password, salt, avatar, is_delete isDelete from t_customer where phone = ? 
+2022-05-07 10:21:00,902 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 10:21:00,940 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 10:21:02,911 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 10:21:02,912 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 10:21:02,924 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:21:03,573 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 10:21:03,576 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:21:03,577 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 10:21:03,578 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:21:03,582 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 10:21:03,588 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:21:03,582 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 10:21:03,591 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:21:03,627 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 10:21:03,628 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:21:03,632 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:21:03,669 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:21:03,669 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:21:03,669 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:21:03,687 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 10:34:51,970 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, phone, is_delete isDelete from t_customer where phone = ? and is_delete != 1 
+2022-05-07 10:34:51,977 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 13886434845(String)
+2022-05-07 10:34:51,980 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 10:34:51,981 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, email, is_delete isDelete from t_customer where email = ? and is_delete != 1 
+2022-05-07 10:34:51,982 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: admin@qq.com(String)
+2022-05-07 10:34:51,984 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 10:34:51,996 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_customer(username, password, salt, phone, email, gender, is_delete, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 10:34:51,998 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 张三(String), F8AB7509B6F7653640BEDBC028C47F39(String), 17D1384D-92A4-4E98-BBA3-A2FEDFCAE086(String), 13886434845(String), admin@qq.com(String), 1(Integer), 0(Integer), 张三(String), 2022-05-07 10:34:51.985(Timestamp), 张三(String), 2022-05-07 10:34:51.985(Timestamp)
+2022-05-07 10:34:52,058 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 10:34:58,902 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, phone, password, salt, avatar, is_delete isDelete from t_customer where phone = ? 
+2022-05-07 10:34:58,903 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 13886434845(String)
+2022-05-07 10:34:58,909 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:34:59,461 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 10:34:59,463 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:34:59,465 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 10:34:59,466 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 10:34:59,466 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:34:59,467 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:34:59,467 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 10:34:59,467 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:34:59,470 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:34:59,471 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:34:59,471 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:34:59,475 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 10:34:59,475 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:34:59,476 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:34:59,482 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-05-07 10:35:01,688 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 10:35:01,689 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 20(Integer)
+2022-05-07 10:35:01,705 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:02,602 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 10:35:02,602 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 20(Integer)
+2022-05-07 10:35:02,605 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:06,209 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 limit ? , ? 
+2022-05-07 10:35:06,210 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 10:35:06,210 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 10:35:06,211 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:35:06,227 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 6
+2022-05-07 10:35:06,255 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 10:35:06,256 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 
+2022-05-07 10:35:06,256 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:35:06,259 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:07,288 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, documentNo, inventoryQuantity, price, inventory, storageTime, drugName, customer_id customerId, is_delete isDelete from t_drug_sales WHERE customer_id like '%20%' order by storageTime desc limit ? , ? 
+2022-05-07 10:35:07,289 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 10:35:07,299 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 10:35:07,301 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales WHERE customer_id like '%20%' 
+2022-05-07 10:35:07,302 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 10:35:07,320 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:13,662 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, phone, is_delete isDelete from t_customer where phone = ? and is_delete != 1 
+2022-05-07 10:35:13,663 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 13886434845(String)
+2022-05-07 10:35:13,665 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:13,666 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, email, is_delete isDelete from t_customer where email = ? and is_delete != 1 
+2022-05-07 10:35:13,667 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: admin@qq.com(String)
+2022-05-07 10:35:13,669 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 10:35:13,670 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: update t_customer set username=?, age=?, phone=?, email=?, address=?, cardBank=?, card=?, modified_user=?, modified_time=? where uid = ? 
+2022-05-07 10:35:13,673 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 李四(String), null, 13886434845(String), admin@qq.com(String), (String), (String), (String), 张三(String), 2022-05-07 10:35:13.67(Timestamp), 20(Integer)
+2022-05-07 10:35:13,690 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:15:50,399 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 13:15:50,412 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 13:15:50,479 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:53,116 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 13:15:53,118 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:15:53,126 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 13:15:53,127 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:15:53,150 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:53,150 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:53,153 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 13:15:53,153 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:15:53,158 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:53,182 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 13:15:53,183 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:15:53,184 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:53,297 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 13:15:53,298 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:15:53,309 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-05-07 13:15:56,046 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, avatar, gender, age, phone, email, cardBank, card from t_employees where uid = ? 
+2022-05-07 13:15:56,050 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2022-05-07 13:15:56,058 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:15:58,028 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, avatar, gender, age, phone, email, cardBank, card from t_employees where uid = ? 
+2022-05-07 13:15:58,030 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 5(Integer)
+2022-05-07 13:15:58,032 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:16:16,653 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-07 13:16:16,654 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15171711762(String)
+2022-05-07 13:16:16,656 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:16:16,658 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_employees(username, password, salt, gender, age, phone, email, avatar, cardBank, card, is_delete, permissions, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:16:16,666 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: lisi (String), 5B3B7A4302C02E347798BFF03D2641A5(String), b0de44bf-9be5-40f8-bfc9-357ee7421afc(String), 1(Integer), 23(Integer), 15171711762(String), admin@qq.com(String), null, (String), (String), 0(Integer), 1(Integer), root(String), 2022-05-07 13:16:16.657(Timestamp), root(String), 2022-05-07 13:16:16.657(Timestamp)
+2022-05-07 13:16:16,775 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:16:20,938 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, gender, age, phone, email, avatar, cardBank, card, is_delete isDelete, permissions, created_user createdUser, created_time createdTime, modified_user modifiedUser, modified_time modifiedTime from t_employees order by is_delete 
+2022-05-07 13:16:20,939 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:16:20,957 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-07 13:16:29,315 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, gender, age, phone, email, avatar, cardBank, card, is_delete isDelete, permissions, created_user createdUser, created_time createdTime, modified_user modifiedUser, modified_time modifiedTime from t_employees order by is_delete 
+2022-05-07 13:16:29,316 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:16:29,327 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-07 13:16:30,498 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, avatar, gender, age, phone, email, cardBank, card, is_delete isDelete from t_employees where username like '%lisi%' 
+2022-05-07 13:16:30,499 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:16:30,508 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:16:45,774 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category where categoryName = ? 
+2022-05-07 13:16:45,776 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 111(String)
+2022-05-07 13:16:45,785 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:16:45,788 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_drug_category(categoryName, note) values (?, ?) 
+2022-05-07 13:16:45,789 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 111(String), 111(String)
+2022-05-07 13:16:45,800 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:16:48,845 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName, note from t_drug_category limit ? , ? 
+2022-05-07 13:16:48,846 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:16:48,863 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:16:48,866 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(categoryId) from t_drug_category 
+2022-05-07 13:16:48,867 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:16:48,883 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:16:54,435 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName, note from t_drug_category where categoryId = ? 
+2022-05-07 13:16:54,437 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1(Integer)
+2022-05-07 13:16:54,448 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:02,417 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName, note from t_drug_category limit ? , ? 
+2022-05-07 13:17:02,418 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:17:02,421 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:17:02,423 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(categoryId) from t_drug_category 
+2022-05-07 13:17:02,424 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:02,434 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:04,948 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName, note from t_drug_category WHERE categoryName like '%感冒药%' limit ? , ? 
+2022-05-07 13:17:04,949 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:17:04,957 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:04,958 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(categoryId) from t_drug_category WHERE categoryName like '%感冒药%' 
+2022-05-07 13:17:04,959 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:04,962 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:06,627 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 13:17:06,628 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:06,631 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:17:27,129 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, barCode, is_delete isDelete from t_drug where barCode = ? 
+2022-05-07 13:17:27,131 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1213215665465465465411(String)
+2022-05-07 13:17:27,140 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:17:27,142 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_drug(drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id, is_delete, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:17:27,147 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 丁苯酞1(String), 1213215665465465465411(String), 丁苯酞1(String), 24(String), 粒(String), 石家庄(String), 1321231313211(String), 65.0(Double), 75.0(Double), 100(Integer), 100(Integer), 1111(String), 1(Integer), 0(Integer), root(String), 2022-05-07 13:17:27.141(Timestamp), root(String), 2022-05-07 13:17:27.141(Timestamp)
+2022-05-07 13:17:44,705 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 13:17:44,707 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:44,708 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:44,712 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 13:17:44,713 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:44,715 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:44,723 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 13:17:44,725 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:44,727 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:44,770 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 13:17:44,771 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:44,773 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:17:44,847 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 13:17:44,848 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:44,851 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-05-07 13:17:48,222 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 13:17:48,223 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:17:48,226 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:18:09,702 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, barCode, is_delete isDelete from t_drug where barCode = ? 
+2022-05-07 13:18:09,705 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1213215665465465465411(String)
+2022-05-07 13:18:09,706 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:18:09,707 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_drug(drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id, is_delete, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:18:09,710 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 丁苯酞11(String), 1213215665465465465411(String), 丁苯酞1(String), 24(String), 粒(String), 石家庄(String), 13212313132(String), 65.0(Double), 75.0(Double), 100(Integer), 0(Integer), 111(String), 1(Integer), 0(Integer), root(String), 2022-05-07 13:18:09.707(Timestamp), root(String), 2022-05-07 13:18:09.707(Timestamp)
+2022-05-07 13:18:15,381 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 limit ? , ? 
+2022-05-07 13:18:15,384 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:18:15,402 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 13:18:15,402 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:15,407 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:18:15,417 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:18:15,418 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 
+2022-05-07 13:18:15,418 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:15,422 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:18:18,153 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id categoryId, is_delete isDelete from t_drug where id = ? 
+2022-05-07 13:18:18,156 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 1(Integer)
+2022-05-07 13:18:18,160 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:18:25,231 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: update t_drug set drugName=?, referred=?, specifications=?, unit=?, origin=?, salesPrice=?, inventory= ?, totalSales=?, drugNote=?, modified_user=?, modified_time=? where id = ? 
+2022-05-07 13:18:25,234 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 京都念慈菴蜜(String), 京都念慈菴蜜(String), 10瓶/盒(String), 瓶(String), 北京(String), 50.0(Double), 52(Integer), 46(Integer), 口服(String), root(String), 2022-05-07 13:18:25.229(Timestamp), 1(Integer)
+2022-05-07 13:18:25,256 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:18:25,555 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 13:18:25,556 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:25,564 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:18:25,566 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 limit ? , ? 
+2022-05-07 13:18:25,567 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:18:25,575 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:18:25,577 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 
+2022-05-07 13:18:25,577 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:25,582 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:18:27,748 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid,username,gender,age,phone,email,address,cardBank,card from t_customer where is_delete != 1 limit ? , ? 
+2022-05-07 13:18:27,752 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:18:27,777 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 13:18:27,783 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 13:18:27,784 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:27,791 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:18:50,966 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select username, phone, email from t_supplier where phone = ? and is_delete != 1 
+2022-05-07 13:18:50,968 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-07 13:18:50,969 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:18:50,970 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select username, phone, email from t_supplier where phone = ? and is_delete != 1 
+2022-05-07 13:18:50,971 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: admin@qq.com(String)
+2022-05-07 13:18:50,975 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:18:50,979 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_supplier(username, phone, email, address, cardBank, card, is_delete, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:18:50,984 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 11(String), 17671041216(String), admin@qq.com(String), 石家庄(String), 中国工商(String), 464656123165465411(String), 0(Integer), 11(String), 2022-05-07 13:18:50.978(Timestamp), 11(String), 2022-05-07 13:18:50.978(Timestamp)
+2022-05-07 13:18:50,989 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:18:55,326 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid,username,phone, email,address,cardBank, card,is_delete isDelete from t_supplier where is_delete!=1 limit ? , ? 
+2022-05-07 13:18:55,327 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:18:55,332 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:18:55,334 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_supplier where is_delete!=1 
+2022-05-07 13:18:55,334 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:18:55,336 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:02,065 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, is_delete isDelete, username, phone, email, address, cardBank, card from t_supplier where uid = ? 
+2022-05-07 13:19:02,066 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 4(Integer)
+2022-05-07 13:19:02,069 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:09,867 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_supplier A, t_drug_stock B where A.uid = B.supplier_id and A.uid = ? 
+2022-05-07 13:19:09,868 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 4(Integer)
+2022-05-07 13:19:10,144 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:10,145 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, is_delete isDelete, username, phone, email, address, cardBank, card from t_supplier where uid = ? 
+2022-05-07 13:19:10,146 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 4(Integer)
+2022-05-07 13:19:10,150 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:21,383 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid,username,phone, email,address,cardBank, card,is_delete isDelete from t_supplier where is_delete!=1 and phone like ' 15263636362%' limit ? , ? 
+2022-05-07 13:19:21,384 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:19:21,388 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:19:21,389 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_supplier where is_delete!=1 and phone like ' 15263636362%' 
+2022-05-07 13:19:21,390 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:21,394 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:24,989 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid,username,phone, email,address,cardBank, card,is_delete isDelete from t_supplier where is_delete!=1 and phone like '15263636362%' limit ? , ? 
+2022-05-07 13:19:24,993 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:19:24,997 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:25,000 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_supplier where is_delete!=1 and phone like '15263636362%' 
+2022-05-07 13:19:25,001 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:25,002 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:28,431 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, is_delete isDelete from t_drug where is_delete != 1 
+2022-05-07 13:19:28,432 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:28,435 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:19:28,436 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username from t_supplier where is_delete != 1 
+2022-05-07 13:19:28,438 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:28,443 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:19:28,445 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, is_delete isDelete from t_employees 
+2022-05-07 13:19:28,446 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:28,450 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-07 13:19:46,718 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_stock where documentNo = ? 
+2022-05-07 13:19:46,719 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: WH56969565(String)
+2022-05-07 13:19:46,722 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:19:50,455 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid limit ? , ? 
+2022-05-07 13:19:50,457 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-07 13:19:50,471 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 6
+2022-05-07 13:19:54,944 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, is_delete isDelete from t_drug where is_delete != 1 
+2022-05-07 13:19:54,946 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:54,952 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:19:54,953 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username from t_supplier where is_delete != 1 
+2022-05-07 13:19:54,955 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:54,960 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:19:54,961 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, is_delete isDelete from t_employees 
+2022-05-07 13:19:54,963 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:19:54,966 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-07 13:20:00,352 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: update t_drug_stock set documentNo=?, inventoryQuantity=?, price=?, inventory=?, storageTime=?, drug_id=?, supplier_id=?, employees_id=? where id = ? 
+2022-05-07 13:20:00,359 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: H45616146411(String), 10(Integer), 5.0(Double), 50.0(Double), 2021-01-01 00:00:00.0(Timestamp), 1(Integer), 4(Integer), 5(Integer), 3(Integer)
+2022-05-07 13:20:00,377 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:20:03,418 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid limit ? , ? 
+2022-05-07 13:20:03,420 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-07 13:20:03,432 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 6
+2022-05-07 13:20:08,687 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid WHERE d.drugName like '%念慈菴%' limit ? , ? 
+2022-05-07 13:20:08,688 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-07 13:20:08,701 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 13:20:12,385 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select drugName,stockOrder,returnOrder,drugAddress, returnTime,employeesName,drugPrice,number, returnPrice,amount,why from t_stock_return limit ? , ? 
+2022-05-07 13:20:12,385 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-07 13:20:12,431 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:20:17,934 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, is_delete isDelete from t_drug where is_delete != 1 
+2022-05-07 13:20:17,936 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:20:17,943 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:20:17,948 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username from t_supplier where is_delete != 1 
+2022-05-07 13:20:17,951 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:20:17,954 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:20:17,958 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, is_delete isDelete from t_employees 
+2022-05-07 13:20:17,959 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:20:17,961 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-07 13:21:12,082 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_stock_return(drugName, stockOrder, returnOrder, drugAddress, returnTime, employeesName, drugPrice, number, returnPrice, amount, why, created_user, created_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:21:12,086 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 京都念慈菴蜜(String), WH1222(String), 111(String), 北京(String), 2022-05-07 00:00:00.0(Timestamp), root(String), 65.0(Double), 5(Integer), 65.0(Double), 325.0(Double), 111(String), root(String), 2022-05-07 13:21:12.081(Timestamp)
+2022-05-07 13:21:12,095 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:21:14,573 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select drugName,stockOrder,returnOrder,drugAddress, returnTime,employeesName,drugPrice,number, returnPrice,amount,why from t_stock_return limit ? , ? 
+2022-05-07 13:21:14,575 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-07 13:21:14,580 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-07 13:21:22,831 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug_sales.id, t_drug_sales.documentNo, t_drug_sales.inventoryQuantity, t_drug_sales.price, t_drug_sales.inventory, t_drug_sales.storageTime, t_drug_sales.drugName, t_customer.username, t_drug_sales.is_delete isDelete from t_drug_sales , t_customer where t_customer.uid = t_drug_sales.customer_id order by t_drug_sales.storageTime desc limit ? , ? 
+2022-05-07 13:21:22,832 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:21:22,837 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 10
+2022-05-07 13:21:22,839 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(t_drug_sales.id) from t_drug_sales , t_customer where t_customer.uid = t_drug_sales.customer_id 
+2022-05-07 13:21:22,840 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:22,842 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:30,430 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug_sales.id, t_drug_sales.documentNo, t_drug_sales.inventoryQuantity, t_drug_sales.price, t_drug_sales.inventory, t_drug_sales.storageTime, t_drug_sales.drugName, t_customer.username, t_drug_sales.is_delete isDelete from t_drug_sales , t_customer where t_customer.uid = t_drug_sales.customer_id and t_customer.username like '%张三%' order by t_drug_sales.storageTime desc limit ? , ? 
+2022-05-07 13:21:30,431 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:21:30,439 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 0
+2022-05-07 13:21:30,440 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(t_drug_sales.id) from t_drug_sales , t_customer where t_customer.uid = t_drug_sales.customer_id and t_customer.username like '%张三%' 
+2022-05-07 13:21:30,442 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:30,444 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:47,050 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, phone, password, salt, avatar, is_delete isDelete from t_customer where phone = ? 
+2022-05-07 13:21:47,052 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15211111111(String)
+2022-05-07 13:21:47,055 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:48,717 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 13:21:48,718 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:48,720 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 13:21:48,721 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:48,740 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:48,754 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 13:21:48,784 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:48,757 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:48,811 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 13:21:48,811 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 13:21:48,812 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:48,813 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:48,814 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:48,814 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-05-07 13:21:48,814 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:50,713 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 13:21:50,713 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15(Integer)
+2022-05-07 13:21:50,715 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:52,006 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, gender, age, address, phone, email, avatar, cardBank, card from t_customer where uid = ? 
+2022-05-07 13:21:52,006 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 15(Integer)
+2022-05-07 13:21:52,009 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:55,727 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 limit ? , ? 
+2022-05-07 13:21:55,732 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:21:55,737 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 9
+2022-05-07 13:21:55,740 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 
+2022-05-07 13:21:55,741 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:55,743 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:21:55,749 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select categoryId, categoryName from t_drug_category 
+2022-05-07 13:21:55,749 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:21:55,751 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-07 13:22:00,067 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 and t_drug.category_id like '%1%' limit ? , ? 
+2022-05-07 13:22:00,068 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:22:00,073 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2022-05-07 13:22:00,074 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 and category_id like '%1%' 
+2022-05-07 13:22:00,075 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:22:00,077 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:22:03,833 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id categoryId, is_delete isDelete from t_drug where id = ? 
+2022-05-07 13:22:03,834 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 8(Integer)
+2022-05-07 13:22:03,836 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:22:03,838 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id categoryId, is_delete isDelete from t_drug where id = ? 
+2022-05-07 13:22:03,839 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 8(Integer)
+2022-05-07 13:22:03,842 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:22:03,847 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: update t_drug set inventory=?, totalSales=? where id = ? 
+2022-05-07 13:22:03,847 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 99(Integer), 11(Integer), 8(Integer)
+2022-05-07 13:22:03,850 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:22:03,850 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, barCode, referred, specifications, unit, origin, approvalNumber, pleasedTo, salesPrice, inventory, totalSales, drugNote, category_id categoryId, is_delete isDelete from t_drug where id = ? 
+2022-05-07 13:22:03,851 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 8(Integer)
+2022-05-07 13:22:03,853 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:22:03,854 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: insert into t_drug_sales(documentNo, inventoryQuantity, price, inventory, storageTime, drugName, customer_id, is_delete, created_user, created_time, modified_user, modified_time) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) 
+2022-05-07 13:22:03,862 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 123456781115(String), 1(Integer), 75.0(Double), 75.0(Double), 2022-05-07 13:22:03.854(Timestamp), 数据1(String), 15(Integer), 0(Integer), 数据1(String), 2022-05-07 13:22:03.854(Timestamp), 数据1(String), 2022-05-07 13:22:03.854(Timestamp)
+2022-05-07 13:22:03,866 DEBUG (BaseJdbcLogger.java:159)- <==    Updates: 1
+2022-05-07 13:22:05,613 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select t_drug.id, t_drug.drugName, t_drug.barCode, t_drug.referred, t_drug.specifications, t_drug.unit, t_drug.origin, t_drug.approvalNumber, t_drug.pleasedTo, t_drug.salesPrice, t_drug.inventory, t_drug.totalSales, t_drug.drugNote, t_drug_category.categoryName, t_drug.is_delete isDelete, t_drug.modified_user modifiedUser, t_drug.modified_time modifiedTime from t_drug , t_drug_category where t_drug.category_id=t_drug_category.categoryId and t_drug.is_delete !=1 and t_drug.category_id like '%1%' limit ? , ? 
+2022-05-07 13:22:05,614 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:22:05,633 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 4
+2022-05-07 13:22:05,634 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(*) from t_drug where is_delete !=1 and category_id like '%1%' 
+2022-05-07 13:22:05,641 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:22:05,648 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:22:10,051 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, documentNo, inventoryQuantity, price, inventory, storageTime, drugName, customer_id customerId, is_delete isDelete from t_drug_sales WHERE customer_id like '%15%' order by storageTime desc limit ? , ? 
+2022-05-07 13:22:10,052 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Long), 10(Integer)
+2022-05-07 13:22:10,059 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 10
+2022-05-07 13:22:10,062 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales WHERE customer_id like '%15%' 
+2022-05-07 13:22:10,062 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:22:10,064 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:39:11,726 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-07 13:39:11,721 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-07 13:39:11,721 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-07 13:39:11,734 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:39:11,734 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:39:11,734 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:39:11,745 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:39:11,746 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:39:11,761 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:39:11,761 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-07 13:39:11,769 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:39:11,780 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-07 13:39:11,812 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-07 13:39:11,813 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-07 13:39:11,815 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3

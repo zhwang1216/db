@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>员工信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-line">
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">员工姓名:</label> <input
+                        id="username" type="text" class="form-control"
+                        placeholder="请输入员工姓名">
+                </div>
+                <div class="row" style="margin-top: 20px">
+                    <div class="col-xs-12 text-right">
+                        <button onclick="getByUsername()" type="button"
+                                class="btn btn-primary">查询
+                        </button>
+                        <button onclick="getAll()" id="select-all" type="button"
+                                class="btn btn-primary">查询全部
+                        </button>
+                        <!-- <button type="button" class="btn" style="margin-right:20px">批量删除</button> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <caption>员工信息:</caption>
+        <thead>
+        <tr class="">
+            <th width="40" class="text-center">
+                <input type="checkbox" id="all"></th>
+            <th class='col-sm-2'>名称</th>
+            <th class='col-sm-1'>性别</th>
+            <th class='col-sm-1'>年龄</th>
+            <th class='col-sm-2'>联系方式</th>
+            <th class='col-sm-2'>邮箱</th>
+            <th class='col-sm-1'>银行账户</th>
+            <th class='col-sm-1'>状态</th>
+            <th class='col-sm-2'>操作</th>
+        </tr>
+        </thead>
+        <tbody id="allemp">
+
+        </tbody>
+    </table>
+
+    <!-- 按钮触发模态框 -->
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-hidden="true">×
+                    </button>
+                    <h4 class="modal-title">修改员工信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" id="form-change">
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">用户名:</label>
+                            <div class="col-sm-9">
+                                <input id="uid" name="uid" type="hidden"> <input
+                                    type="text" id="empname" class="form-control" name="username"
+                                    style="height: 40px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">年龄:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="age" class="form-control" name="age"
+                                       style="height: 40px;"/>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">性别:</label>
+                            <div class="col-sm-9">
+                                <input type="radio"  name="gender" value='0'>男
+                                <input type="radio"  name="gender" value="1">女
+                            </div>
+                        </div>
+                        -->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">电话（登录）:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="phone" class="form-control" name="phone"
+                                       style="height: 40px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">邮箱:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="email" class="form-control" name="email"
+                                       style="height: 40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">开户行:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="cardBank" class="form-control"
+                                       name="cardBank" style="height: 40px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">银行账号:</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="card" class="form-control" name="card"
+                                       style="height: 40px;"/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button id="change-info" onclick="change_emp_info()" type="button"
+                            class="btn btn-primary">提交更改
+                    </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+<script type="text/javascript" src="js/employees.js"></script>
+</body>
+</html>

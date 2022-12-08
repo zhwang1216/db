@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>药品显示</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+    <!--  PAGINATION plugin -->
+    <link rel="stylesheet" type="text/css" href="common/path/css/jquery.bs_pagination.min.css">
+    <script type="text/javascript" src="common/path/js/jquery.bs_pagination.min.js"></script>
+    <script type="text/javascript" src="common/path/js/localization/en.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">药品类别:</label>
+                    <select class="form-control" id="query-categoryId" name="categoryId" style="height:40px;">
+                        <option value="" selected>请选择</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">药品名:</label>
+                    <input type="text" id="query-drugName" class="form-control" placeholder="请输入药品名">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">单位:</label>
+                    <input type="text" id="query-unit" class="form-control" placeholder="请输入药品所属单位">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">产地:</label>
+                    <input type="text" id="query-origin" class="form-control" placeholder="请输入药品产地">
+                </div>
+            </div>
+            <div class="row col-xs-12" style="margin-top:30px">
+                <div class="col-xs-6 text-left">
+                    <input type="text" name="number" class="form-control col-xs-2" style="width: 150px;height: 40px;"
+                           placeholder="选择购买数量" value="1" placeholder>
+                    &nbsp;&nbsp;
+                    <button type="button" id="btn-shopping-cart" class="btn layui-btn col-xs-2">购买</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <button type="button" id="query-action-btn" class="btn btn-primary">查询</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <caption>药品查询</caption>
+        <thead>
+        <tr>
+            <th width="40" class="text-center">
+                <input type="checkbox" id="all"></th>
+            <th class="col-sm-2">药品名</th>
+            <th class="col-sm-2">药品类别</th>
+            <th class="col-sm-1">规格</th>
+            <th class="col-sm-2">产地</th>
+            <th class="col-sm-1">价格</th>
+            <th class="col-sm-1">库存</th>
+            <th class="col-sm-3">备注</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div id="query-page"></div>
+</div>
+<script type="text/javascript" src="js/buyDrugs.js"></script>
+</body>
+</html>

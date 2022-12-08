@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 客户的Mybatis数据语句 -->
+<!-- namespace：匹配java接口， id:对应的是抽象方法的方法名, parameterType:对应的是方法用到的实体类 #{}:中的名称是参数User类中的属性 -->
+<mapper namespace="com.zhwang.drug.dao.CustomerDao">
+
+    <!-- 查询客户表的uid和客户名称 -->
+    <!-- Customer findByUidUsername() -->
+    <select id="findByUidUsername" resultType="com.zhwang.drug.entity.Customer">
+        select uid, username, is_delete isDelete
+        from t_customer
+    </select>
+
+    <!-- 根据电话返回用户部分信息,主要用于保证插入数据时，电话的唯一性 -->
+    <!-- Customer findByPhone(String phone) -->
+    <select id="findByPhone" resultType="com.zhwang.drug.entity.Customer">
+        select uid, phone, is_delete isDelete
+        from t_customer
+        where phone = #{phone}
+          and is_delete != 1
+    </select>
+
+    <!-- 根据邮箱返回用户部分信息,主要用于保证插入数据时，邮箱的唯一性 -->
+    <!-- Customer findByEmail(String email) -->
+    <select id="findByEmail" resultType="com.zhwang.drug.entity.Customer">
+        select uid, email, is_delete isDelete
+        from t_customer
+        where email = #{email}
+          and is_delete != 1
+    </select>
+
+    <!-- 客户简单注册（用户名、密码、盐值、手机号、邮箱，性别） -->
+    <!-- Integer insertCustomer(Customer customer) -->
+    <insert id="insertCustomer">
+        insert into t_customer(username, password, salt, phone, email, gender, is_delete,
+                               created_user, created_time, modified_user, modified_time)
+        values (#{username}, #{password}, #{salt}, #{phone}, #{email}, #{gender}, #{isDelete},
+                #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <!-- 根据手机号进行登录判断 -->
+    <!-- Customer loginCustomer(String phone); -->
+    <select id="loginCustomer" resultType="com.zhwang.drug.entity.Customer">
+        select uid, username, phone, password, salt, avatar, is_delete isDelete
+        from t_customer
+        where phone = #{phone}
+    </select>
+
+    <!-- 根据条件查询客户所有数据 -->
+    <!-- List<Customer> selectCustomerForPage(Map<String,Object> map); -->
+    <select id="selectCustomerForPage" resultType="com.zhwang.drug.entity.Customer">
+        select uid,username,gender,age,phone,email,address,cardBank,card
+        from t_customer where is_delete != 1
+        <if test="username != '' and username != null">
+            and username like '%${username}%'
+        </if>
+        <if test="gender != '' and gender != null">
+            and gender like '%${gender}%'
+        </if>
+        <if test="address != '' and address != null">
+            and address like '%${address}%'
+        </if>
+        limit #{beginNo} , #{pageSize}
+    </select>
+
+    <!-- 根据条件查询客户总条数 -->
+    <!-- Long selectCustomerCount(Map<String,Object> map); -->
+    <select id="selectCustomerCount" resultType="java.lang.Long">
+        select count(uid) from t_customer where is_delete != 1
+        <if test="username != '' and username != null">
+            and username like '%${username}%'
+        </if>
+        <if test="gender != '' and gender != null">
+            and gender like '%${gender}%'
+        </if>
+        <if test="address != '' and address != null">
+            and address like '%${address}%'
+        </if>
+    </select>
+
+    <!-- 根据uid删除客户信息 -->
+    <!-- Integer deleteCustomer(Integer uid); -->
+    <update id="deleteCustomer">
+        update t_customer
+        set is_delete=#{isDelete},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <!-- 判断该条数据是否被引用 -->
+    <!-- Integer deleteCustomerId(Integer uid); -->
+    <select id="deleteCustomerId" resultType="java.lang.Integer">
+        select count(*)
+        from t_customer A,
+             t_drug_sales B
+        where A.uid = B.customer_id
+          and A.uid = #{uid}
+    </select>
+
+    <!-- 修改客户数据 -->
+    <!-- Integer updateCustomer(Customer customer); -->
+    <update id="updateCustomer">
+        update t_customer
+        set username=#{username},
+            age=#{age},
+            phone=#{phone},
+            email=#{email},
+            address=#{address},
+            cardBank=#{cardBank},
+            card=#{card},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <!-- 根据uid出现所有个人数据 -->
+    <!-- Customer findByUid(Integer uid); -->
+    <select id="findByUid" resultType="com.zhwang.drug.entity.Customer">
+        select uid,
+               username,
+               gender,
+               age,
+               address,
+               phone,
+               email,
+               avatar,
+               cardBank,
+               card
+        from t_customer
+        where uid = #{uid}
+    </select>
+
+    <!-- 根据uid查询密码，和颜值 -->
+    <!-- Customer findByuidPassword(Integer uid); -->
+    <select id="findByuidPassword" resultType="com.zhwang.drug.entity.Customer">
+        select uid, password, salt, is_delete isDelete
+        from t_customer
+        where uid = #{uid}
+    </select>
+
+    <!-- 根据uid修改密码 -->
+    <!-- Integer updateByUidPassword(@Param("uid")Integer uid,@Param("password")String password); -->
+    <update id="updateByUidPassword">
+        update t_customer
+        set password=#{password},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <!-- 根据uid修改头像 -->
+    <!-- Integer uploadAvata(Integer uid); -->
+    <update id="uploadAvata">
+        update
+            t_customer
+        set avatar=#{avatar}
+        where uid = #{uid}
+    </update>
+
+    <!-- 查询客户数量 -->
+    <!-- Long selectIdCount(); -->
+    <select id="selectIdCount" resultType="java.lang.Long">
+        select count(uid)
+        from t_customer
+        where is_delete != 1
+    </select>
+
+    <!-- 根据年份，查询每年的12月注册数据 -->
+    <!-- CustomerTime selectYearMonth(String year); -->
+    <select id="selectYearMonth" resultType="com.zhwang.drug.entity.CustomerTime">
+        select month(created_time) month,count(uid) count
+        from t_customer
+        where is_delete != 5
+        <if test="createdTime != '' and createdTime != null">
+            and year(created_time) like '${createdTime}%'
+        </if>
+        group by month (created_time)
+    </select>
+
+
+</mapper>

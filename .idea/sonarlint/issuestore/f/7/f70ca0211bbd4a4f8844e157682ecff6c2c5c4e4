@@ -1,0 +1,28 @@
+
+Z
+java:S24419"?Make "Employees" serializable or don't store it in the session.(ˆğñÊÿÿÿÿÿ
+Q	java:S125x"<This block of commented-out lines of code should be removed.(Ñšó
+n
+java:S2293*"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+t
+java:S2293;"YReplace the type specification in this constructor call with the diamond operator ("<>").(úŒŸÊıÿÿÿÿ
+n
+java:S2293A"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+o
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ğ‰‚±
+t
+java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(úŒŸÊıÿÿÿÿ
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜šÎÈûÿÿÿÿ
+o
+java:S2293•"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+o
+java:S2293›"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+o
+java:S2293¡"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+u
+java:S2293§"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ü¡„äüÿÿÿÿ
+_
+java:S1192("IDefine a constant instead of duplicating this literal "username" 3 times.(²İ‹ÿ
+i
+java:S2259|"NA "NullPointerException" could be thrown; "originalFilename" is nullable here.(óÆ˜ëşÿÿÿÿ

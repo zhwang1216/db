@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>医疗管理系统-登录</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrapValidator.css"/>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/bootstrapValidator.js"></script>
+    <script src="common/bootstrap/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="javascript/login.js"></script>
+    <style TYPE="text/css">
+        .container {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-40%, -50%);
+        }
+
+    </style>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading content">
+                    <h4 style="text-align:center">欢迎用户登录</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="form-login" style="margin-top: 30px;">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">手机号:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="phone" placeholder="请输入手机号"
+                                       style="height:35px;"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <label id="message" style="color:red;"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"
+                                   style="text-align: right;">密&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="password" style="height:35px;" placeholder="请输入密码"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <label id="error" style="color:red;"></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"
+                                   style="text-align: right;">角&nbsp;&nbsp;&nbsp;&nbsp;色:</label>
+                            <div class="col-sm-6" style="font-size: 20px;">
+                                <input type="radio" name="type" id="radio-type-kehu" checked
+                                       style="height:20px;width:20px;">&nbsp;客&nbsp;&nbsp;户
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="type" id="radio-type-ygong" style="height:20px;width:20px;">
+                                员&nbsp;&nbsp;工
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-3">
+                                <button type="button" id="btn-login" class="btn btn-primary btn-block">登&nbsp;&nbsp;录
+                                </button>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="register.html">
+                                    <button type="button" class="btn btn-primary btn-block">没有账户，去注册</button>
+                                </a>
+                            </div>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>

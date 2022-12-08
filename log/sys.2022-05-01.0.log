@@ -1,0 +1,46 @@
+2022-05-01 16:26:15,892 INFO (StartupInfoLogger.java:50)- Starting DiemsApplication on ZhwangMac.local with PID 1897 (started by Zhwang in /Users/zhwang/论文/Demo/Drug-sales-and-storage)
+2022-05-01 16:26:15,906 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2022-05-01 16:26:15,906 INFO (SpringApplication.java:679)- The following profiles are active: dev
+2022-05-01 16:26:18,917 INFO (StartupInfoLogger.java:59)- Started DiemsApplication in 3.807 seconds (JVM running for 5.775)
+2022-05-01 16:26:33,020 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-05-01 16:26:33,044 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-05-01 16:26:33,118 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:33,833 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-05-01 16:26:33,835 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:33,836 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-05-01 16:26:33,836 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:33,855 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:33,855 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:33,865 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-05-01 16:26:33,865 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-05-01 16:26:33,866 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:33,866 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:33,883 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:33,888 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:33,932 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-05-01 16:26:33,933 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:33,944 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-05-01 16:26:36,827 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select id, drugName, is_delete isDelete from t_drug where is_delete != 1 
+2022-05-01 16:26:36,828 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:36,835 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 7
+2022-05-01 16:26:36,836 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username from t_supplier where is_delete != 1 
+2022-05-01 16:26:36,837 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:36,842 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-01 16:26:36,844 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, is_delete isDelete from t_employees 
+2022-05-01 16:26:36,845 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-05-01 16:26:36,850 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-05-01 16:26:38,304 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid limit ? , ? 
+2022-05-01 16:26:38,304 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-01 16:26:38,320 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-01 16:26:52,673 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid limit ? , ? 
+2022-05-01 16:26:52,675 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-01 16:26:52,682 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-01 16:26:55,150 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid limit ? , ? 
+2022-05-01 16:26:55,151 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-01 16:26:55,155 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 5
+2022-05-01 16:26:55,653 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid WHERE d.drugName like '%京%' limit ? , ? 
+2022-05-01 16:26:55,654 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-01 16:26:55,663 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-05-01 16:26:57,528 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select d.drugName,e.username empName, ds.inventory,ds.inventoryQuantity, ds.price,ds.storageTime, s.username supName,ds.is_delete isDelete, ds.id drugId,ds.documentNo from t_drug_stock ds join t_drug d on ds.drug_id=d.id join t_employees e on ds.employees_id=e.uid join t_supplier s on ds.supplier_id=s.uid WHERE d.drugName like '%京%' limit ? , ? 
+2022-05-01 16:26:57,528 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 0(Integer), 10(Integer)
+2022-05-01 16:26:57,531 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1

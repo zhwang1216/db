@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>医疗管理系统用户注册</title>
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.css"/>
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrapValidator.css"/>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/bootstrapValidator.js"></script>
+    <script type="text/javascript" src="javascript/register.js" ></script>
+    <style TYPE="text/css">
+        .container{
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-35%, -50%);
+        }
+    </style>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="panel panel-primary">
+                <div class="panel-heading content">
+                    <h4 style="text-align:center">欢迎用户注册</h4>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" id="form-reg" style="margin-top: 30px;">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="username" placeholder="输入你的姓名" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">联系电话:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="phone" placeholder="输入手机号码" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="email" placeholder="输入邮箱" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="password" placeholder="请输入密码"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">确认密码:</label>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control" name="newpassword" placeholder="请再次输入密码" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别:</label>
+                            <div class="col-sm-6">
+                                <input type="radio" name="gender" value="1" checked style="height:20px;width:20px;">&nbsp;男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="radio" name="gender" value="0" style="height:20px;width:20px;">&nbsp;女
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-3">
+                                <button type="button" id="btn-reg" class="btn btn-primary btn-block">提&nbsp;&nbsp;交</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="reset" class="btn btn-primary btn-block">重&nbsp;&nbsp;置</button>
+                            </div>
+                        </div>
+                        <br><br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/register.js"> </script>
+</body>
+</html>

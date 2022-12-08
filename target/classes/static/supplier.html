@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>供货商显示</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+    <!--  PAGINATION plugin -->
+    <link rel="stylesheet" type="text/css" href="common/path/css/jquery.bs_pagination.min.css">
+    <script type="text/javascript" src="common/path/js/jquery.bs_pagination.min.js"></script>
+    <script type="text/javascript" src="common/path/js/localization/en.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">供应商名称:</label>
+                    <input type="text" id="query-supplier-name" class="form-control" placeholder="请输入供应商名称">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">电话:</label>
+                    <input type="text" id="query-supplier-phone" class="form-control" placeholder="请输入电话">
+                </div>
+                <div class="form-group col-sm-3">
+                    <label for="firstname" class="control-label">邮箱:</label>
+                    <input type="text" id="query-supplier-email" class="form-control" placeholder="请输入邮箱">
+                </div>
+            </div>
+            <div class="row col-xs-12" style="margin-top:20px">
+                <div class="col-xs-6 text-left">
+                    <button type="button" id="btn-update" class="btn layui-btn" data-toggle='modal'
+                            data-target='#ModalSupplier'>编辑
+                    </button>
+                    <button type="button" id="btn-delete" class="btn layui-btn layui-btn-danger">删除</button>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <button type="button" id="query-action-btn" class="btn btn-primary">查询</button>
+                    <button type="button" id="query-action-btn-all" class="btn btn-primary">查询全部</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <caption>供应商查询</caption>
+        <thead>
+        <tr class="">
+            <th width="40" class="text-center">
+                <input type="checkbox" value="" id="all">
+            </th>
+            <th class="col-sm-2 text-center">供应商名称</th>
+            <th class="col-sm-2 text-center">电话</th>
+            <th class="col-sm-2 text-center">邮箱</th>
+            <th class="col-sm-2 text-center">地址</th>
+            <th class="col-sm-2 text-center">开户行</th>
+            <th class="col-sm-2 text-center">银行账号</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div id="query-page"></div>
+
+    <!-- 模态框 -->
+    <div class="modal fade" id="ModalSupplier" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="updateSupplier">
+                <form class="form-horizontal" id="form-supplier" style="margin-top: 30px; ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">修改供应商信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商名称:</label>
+                            <div class="col-sm-6">
+                                <input type="hidden" name="uid"/>
+                                <input type="text" class="form-control" name="username" style="height:35px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商电话:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="phone" style="height:35px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商邮箱:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="email" style="height:35px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商地址:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="address" style="height:35px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商开户行:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="cardBank" style="height:35px;"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供应商银行账号:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" name="card" style="height:35px;"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-update-supplier" class="btn btn-primary">提交</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+<script type="text/javascript" src="js/supplier.js"></script>
+</body>
+</html>

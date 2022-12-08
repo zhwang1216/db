@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 进货的Mybatis数据语句 -->
+<!-- namespace：匹配java接口， id:对应的是抽象方法的方法名, parameterType:对应的是方法用到的实体类 #{}:中的名称是参数User类中的属性 -->
+<mapper namespace="com.zhwang.drug.dao.DrugSalesDao">
+
+    <!-- 添加药品购买信息 -->
+    <!-- Integer insertDrugSales(DrugSales drugSales); -->
+    <insert id="insertDrugSales">
+        insert into t_drug_sales(documentNo, inventoryQuantity, price, inventory,
+                                 storageTime, drugName, customer_id, is_delete,
+                                 created_user, created_time, modified_user, modified_time)
+        values (#{documentNo}, #{inventoryQuantity}, #{price}, #{inventory},
+                #{storageTime}, #{drugName}, #{customerId}, #{isDelete},
+                #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <!-- 根据客户id查询以购买的药品信息 -->
+    <!-- DrugSales selectDrugSalesPage(Map<String,Object> map) -->
+    <select id="selectDrugSalesPage" resultType="com.zhwang.drug.entity.DrugSales">
+        select
+        id, documentNo, inventoryQuantity, price,
+        inventory, storageTime, drugName,
+        customer_id customerId, is_delete isDelete
+        from t_drug_sales
+        <where>
+            <if test="drugName != '' and drugName != null">
+                and drugName like '%${drugName}%'
+            </if>
+            <if test="storageTime != '' and storageTime != null">
+                and storageTime like '%${storageTime}%'
+            </if>
+            <if test="customerId != '' and customerId != null">
+                and customer_id like '%${customerId}%'
+            </if>
+        </where>
+        order by storageTime desc
+        limit #{beginNo} , #{pageSize}
+    </select>
+
+    <!-- 根据条件，查询日志信息数量 -->
+    <!-- Long selectDrugSalesCount(Map<String,Object> map) -->
+    <select id="selectDrugSalesCount" resultType="java.lang.Long">
+        select count(id)
+        from t_drug_sales
+        <where>
+            <if test="drugName != '' and drugName != null">
+                and drugName like '%${drugName}%'
+            </if>
+            <if test="storageTime != '' and storageTime != null">
+                and storageTime like '%${storageTime}%'
+            </if>
+            <if test="customerId != '' and customerId != null">
+                and customer_id like '%${customerId}%'
+            </if>
+        </where>
+    </select>
+
+    <!-- 条件查询以购买的药品信息 -->
+    <!-- DrugSales getselectDrugSalesPage(Map<String,Object> map) -->
+    <select id="getselectDrugSalesPage" resultType="com.zhwang.drug.entity.DrugSalesANDCustomer">
+        select
+        t_drug_sales.id, t_drug_sales.documentNo, t_drug_sales.inventoryQuantity, t_drug_sales.price,
+        t_drug_sales.inventory, t_drug_sales.storageTime, t_drug_sales.drugName,
+        t_customer.username, t_drug_sales.is_delete isDelete
+        from t_drug_sales , t_customer
+        where t_customer.uid = t_drug_sales.customer_id
+        <if test="drugName != '' and drugName != null">
+            and t_drug_sales.drugName like '%${drugName}%'
+        </if>
+        <if test="storageTime != '' and storageTime != null">
+            and t_drug_sales.storageTime like '%${storageTime}%'
+        </if>
+        <if test="username != '' and username != null">
+            and t_customer.username like '%${username}%'
+        </if>
+        order by t_drug_sales.storageTime desc
+        limit #{beginNo} , #{pageSize}
+    </select>
+
+    <!-- 根据条件，查询日志信息数量 -->
+    <!-- Long getselectDrugSalesCount(Map<String,Object> map) -->
+    <select id="getselectDrugSalesCount" resultType="java.lang.Long">
+        select count(t_drug_sales.id)
+        from t_drug_sales , t_customer
+        where t_customer.uid = t_drug_sales.customer_id
+        <if test="drugName != '' and drugName != null">
+            and t_drug_sales.drugName like '%${drugName}%'
+        </if>
+        <if test="storageTime != '' and storageTime != null">
+            and t_drug_sales.storageTime like '%${storageTime}%'
+        </if>
+        <if test="username != '' and username != null">
+            and t_customer.username like '%${username}%'
+        </if>
+    </select>
+
+    <!-- 查询销售数量 -->
+    <!-- Long selectIdCount(); -->
+    <select id="selectIdCount" resultType="java.lang.Long">
+        select count(id)
+        from t_drug_sales
+        where is_delete != 1
+    </select>
+
+
+</mapper>

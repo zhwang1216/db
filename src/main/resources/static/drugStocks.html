@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进货信息</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+    <!--  PAGINATION plugin -->
+    <link rel="stylesheet" type="text/css" href="common/path/css/jquery.bs_pagination.min.css">
+    <script type="text/javascript" src="common/path/js/jquery.bs_pagination.min.js"></script>
+    <script type="text/javascript" src="common/path/js/localization/en.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-line">
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">药品名:</label>
+                    <input id="inp-documentNo" type="text" class="form-control" placeholder="请输入药品名称">
+                </div>
+                <div class="row col-xs-12" style="margin-top: 20px">
+                    <div class="col-xs-6 text-left">
+                        <button type="button" id="btn-update" class="btn layui-btn" data-toggle='modal'
+                                data-target='#ModalDrugCategory'>编辑
+                        </button>
+                        <button type="button" id="btn-delete" class="btn layui-btn layui-btn-danger">删除</button>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <button type="button" id="query-action-btn" class="btn btn-primary">条件查询</button>
+                        <button type="button" id="query-action-btn-all" class="btn btn-primary">查询全部</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr class="">
+            <th width="40" class="text-center"><input type="checkbox" id="all"></th>
+            <th class='col-sm-2'>入库单据号</th>
+            <th class='col-sm-2'>药品名</th>
+            <th class='col-sm-1'>员工名</th>
+            <th class='col-sm-2'>入库金额</th>
+            <th class='col-sm-1'>入库数量</th>
+            <th class='col-sm-1'>入库单价</th>
+            <th class='col-sm-2'>入库时间</th>
+            <th class='col-sm-1'>供货商名</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div id="query-page"></div>
+
+    <!-- 按钮触发模态框 -->
+    <!-- 模态框 -->
+    <div class="modal fade" id="ModalDrugCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="updateDrugCategory">
+                <form class="form-horizontal" id="form-DrugCategory" style="margin-top: 30px; ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">修改进货信息</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">入库单据号:</label>
+                            <div class="col-sm-8">
+                                <input id="modal_id" type="hidden" name="id" value=""/>
+                                <input id="modal_documentNo" type="text" class="form-control" name="documentNo"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">药品名称:</label>
+                            <div class="col-xs-8">
+                                <select id="modal_drugName" name="drugId" class="form-control" style="height:40px;">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">员工名称:</label>
+                            <div class="col-xs-8">
+                                <select id="modal_empName" name="employeesId" class="form-control" style="height:40px;">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">入库金额:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_inventory" type="text" class="form-control" name="inventory"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">入库数量:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_inventoryQuantity" type="text" class="form-control"
+                                       name="inventoryQuantity" style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">入库单价:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_price" type="text" class="form-control" name="price"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">入库时间:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_storageTime" type="date" class="form-control" name="storageTime"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">供货商名:</label>
+                            <div class="col-xs-8">
+                                <select id="modal_supName" name="supplierId" class="form-control" style="height:40px;">
+
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="btn-update-drugCategory" class="btn btn-primary">提交</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>
+<script type="text/javascript" src="js/drugStocks.js"></script>
+</body>
+</html>

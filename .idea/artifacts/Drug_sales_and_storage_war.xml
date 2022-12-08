@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Drug-sales-and-storage:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Drug-sales-and-storage</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="DIEMS.war">
+      <element id="artifact" artifact-name="Drug-sales-and-storage:war exploded" />
+    </root>
+  </artifact>
+</component>

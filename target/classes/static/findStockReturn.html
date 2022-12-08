@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>日志信息显示</title>
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="common/bootstrap/css/bootstrap.min.css">
+    <script src="common/bootstrap/js/jquery.min.js"></script>
+    <script src="common/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 分页插件 -->
+    <!--  PAGINATION plugin -->
+    <link rel="stylesheet" type="text/css" href="common/path/css/jquery.bs_pagination.min.css">
+    <script type="text/javascript" src="common/path/js/jquery.bs_pagination.min.js"></script>
+    <script type="text/javascript" src="common/path/js/localization/en.js"></script>
+
+    <style type="text/css">
+        .container {
+            width: 90%;
+            padding-top: 50px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">查询条件</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-line">
+                <div class="form-group col-sm-4">
+                    <label for="firstname" class="control-label">药品名:</label>
+                    <input id="inp-documentNo" type="text" class="form-control" placeholder="请输入药品名称">
+                </div>
+                <div class="row col-xs-12" style="margin-top: 20px">
+                    <div class="col-xs-12 text-right">
+                        <button type="button" id="btn-insert" class="btn btn-primary" data-toggle='modal'
+                                data-target='#ModalDrugCategory'>添加
+                        </button>
+                        <button type="button" id="query-action-btn" class="btn btn-primary">条件查询</button>
+                        <button type="button" id="query-action-btn-all" class="btn btn-primary">查询全部</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <!--	退货信息-->
+        <caption>退货信息</caption>
+        <thead>
+        <tr class="">
+            <th class="col-sm-1">药品名称</th>
+            <th class="col-sm-1">进货单号</th>
+            <th class="col-sm-1">退货单号</th>
+            <th class="col-sm-1">药品产地</th>
+            <th class="col-sm-1">退货时间</th>
+            <th class="col-sm-1">员工名称</th>
+            <th class="col-sm-1">购买药品单价</th>
+            <th class="col-sm-1">退货数量</th>
+            <th class="col-sm-1">退货时金额</th>
+            <th class="col-sm-1">退货总金额</th>
+            <th class="col-sm-1">退货原因</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <!-- 分页 -->
+    <div id="query-page"></div>
+
+    <!-- 按钮触发模态框 -->
+    <!-- 模态框 -->
+    <div class="modal fade" id="ModalDrugCategory" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" id="updateDrugCategory">
+                <form class="form-horizontal" id="form-DrugCategory" style="margin-top: 30px; ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">添加退货信息</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">药品名称:</label>
+                            <div class="col-xs-8">
+                                <select id="modal_drugName" name="drugName" class="form-control" style="height:40px;">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">进货单号:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_stockOrder" type="text" class="form-control" name="stockOrder"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货单号:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_returnOrder" type="text" class="form-control" name="returnOrder"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">药品产地:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_drugAddress" type="text" class="form-control" name="drugAddress"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货时间:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_returnTime" type="date" class="form-control" name="returnTime"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">员工名称:</label>
+                            <div class="col-xs-8">
+                                <select id="modal_employeesName" name="employeesName" class="form-control"
+                                        style="height:40px;">
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">购买药品单价:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_drugPrice" type="text" class="form-control" name="drugPrice"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货数量:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_number" type="text" class="form-control" name="number"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货时金额:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_returnPrice" type="text" class="form-control" name="returnPrice"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货总金额:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_amount" type="text" class="form-control" name="amount"
+                                       style="height:40px;"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" style="text-align: right;">退货原因:</label>
+                            <div class="col-sm-8">
+                                <input type="hidden" name="categoryId"/>
+                                <input id="modal_why" type="text" class="form-control" name="why" style="height:40px;"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id="btn-update-drugCategory" class="btn btn-primary">提交</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </div>
+
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        //页面一加载，执行的查询数据
+        display(1, 10, 0);
+        //点击添加按钮
+        $("#btn-insert").click(function () {
+            //清空下拉选  不清空数据会堆加
+            $("#modal_drugName").html("");
+            $("#modal_employeesName").html("");
+            //向下拉选里面添加数据
+            $.ajax({
+                "url": "/drugstock/findid",
+                "type": "GET",
+                "dataType": "json",
+                "success": function (json) {
+                    //List<List<Map<Integer, String>>>
+                    var i = 1;
+                    $(json.data).each(function () {
+                        //List<Map<Integer, String>>   数组类型
+                        $(this).each(function () {
+                            //Map<Integer, String>   object类型
+                            $.each(this, function (key, values) {
+                                if (i == 1) {
+                                    $("#modal_drugName").append(
+                                        "<option value='" + values + "'>" + values + "</option>"
+                                    );
+                                }
+                                if (i == 3) {
+                                    $("#modal_employeesName").append(
+                                        "<option value='" + values + "'>" + values + "</option>"
+                                    );
+                                }
+                            });
+                        })
+                        i++;
+                    })
+                }
+            });
+        });
+
+        //点击提交按钮
+        $("#btn-update-drugCategory").click(function () {
+            $.ajax({
+                //修改url地址
+                "url": "stockreturn/addstockreturn",
+                "type": "POST",
+                "data": $("#form-DrugCategory").serialize(),
+                "dataType": "json",
+                "success": function (json) {
+                    if (json.state == 200) {
+                        alert("添加成功!!!");
+                        window.location.reload();
+                    } else {
+                        alert(json.message);
+                    }
+                }
+            });
+        });
+
+        //点击查询按钮
+        $("#query-action-btn").click(function () {
+            display(1, 10, 0);
+        });
+
+        //查询全部
+        $("#query-action-btn-all").click(function () {
+            display(1, 10, 1);
+        })
+
+        //函数
+        function display(pageNoStr, pageSizeStr, all) {
+            var documentNo = $("#inp-documentNo").val();
+            if (all == 1) {
+                documentNo = "";
+            }
+            params = {
+                //分页查询
+                "pageNoStr": pageNoStr,
+                "pageSizeStr": pageSizeStr,
+                //查询条件
+                "documentNo": documentNo,
+            }
+            $.ajax({
+                "url": "stockreturn/findstockreturn",
+                "data": params,
+                "type": 'GET',
+                "success": function (json) {
+                    var htmlStr = "";
+                    $.each(json.data, function () {
+                        htmlStr += doCreateTd(this);
+                    });
+                    //展示到页面上
+                    $("tbody").html(htmlStr);
+                    //页面插件
+                    //计算总页数
+                    var totalPages = 1;
+                    if (json.data.count % pageSizeStr == 0) {
+                        totalPages = json.data.length / pageSizeStr;
+                    } else {
+                        totalPages = parseInt(json.data.length / pageSizeStr) + 1;
+                    }
+
+                    $("#query-page").bs_pagination({
+                        currentPage: pageNoStr, //当前页码
+                        rowsPerPage: pageSizeStr, //每页显示条数
+                        totalRows: json.data.length, //总条数
+                        totalPages: totalPages,//总页数
+
+                        visiblePageLinks: 5, //最多显示的卡片数
+                        showGoToPage: true, //是否显示跳转到几页
+                        showRowsPerPage: true, //是否显示每页显示条数
+                        showRowsInfo: true, //是否显示记录条数
+                        //用来监听页号切换的事件，event代表事件，pageobj代表页面信息
+                        onChangePage: function (event, pageObj) {
+                            display(pageObj.currentPage, pageObj.rowsPerPage, 0);
+                        }
+                    });
+                }
+            })
+        };
+    });
+
+    function doCreateTd(obj) {
+        var tds =
+            "<tr>" +
+            "<th>" + obj.drugName + "</th>" +
+            "<th>" + obj.stockOrder + "</th>" +
+            "<th>" + obj.returnOrder + "</th>" +
+            "<th>" + obj.drugAddress + "</th>" +
+            "<th>" + obj.returnTime + "</th>" +
+            "<th>" + obj.employeesName + "</th>" +
+            "<th>" + obj.drugPrice + "</th>" +
+            "<th>" + obj.number + "</th>" +
+            "<th>" + obj.returnPrice + "</th>" +
+            "<th>" + obj.amount + "</th>" +
+            "<th>" + obj.why + "</th>" +
+            "</tr>"
+        return tds;
+    }
+
+</script>
+</body>
+</html>

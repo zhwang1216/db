@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 退货的Mybatis数据语句 -->
+
+<mapper namespace="com.zhwang.drug.dao.StockReturnDao">
+
+    <!--
+        id,drugName,stockOrder,returnOrder,drugAddress,returnTime,employeesName,drugPrice,number,returnPrice,amount,why,
+        created_user createdUser, created_time createdTime, modified_user modifiedUser, modified_time modifiedTime
+     -->
+
+
+    <!-- 添加退货信息 -->
+    <!-- void insertStockReturn(StockReturn stockReturn) -->
+    <insert id="insertStockReturn">
+        insert into t_stock_return(drugName, stockOrder, returnOrder, drugAddress,
+                                   returnTime, employeesName, drugPrice, number,
+                                   returnPrice, amount, why,
+                                   created_user, created_time)
+        values (#{drugName}, #{stockOrder}, #{returnOrder}, #{drugAddress},
+                #{returnTime}, #{employeesName}, #{drugPrice}, #{number},
+                #{returnPrice}, #{amount}, #{why},
+                #{createdUser}, #{createdTime})
+    </insert>
+
+    <!-- 查询所有的退货信息 -->
+    <!-- List<StockReturn> findStockReturn(Integer pageNoStr,Integer pageSizeStr,String documentNo) -->
+    <select id="findStockReturn" resultType="com.zhwang.drug.entity.StockReturn">
+        select
+        drugName,stockOrder,returnOrder,drugAddress,
+        returnTime,employeesName,drugPrice,number,
+        returnPrice,amount,why
+        from
+        t_stock_return
+        <where>
+            <!-- 添加查询条件 -->
+            <if test="documentNo != '' and documentNo != null">
+                and drugName like '%${documentNo}%'
+            </if>
+        </where>
+        limit #{pageNoStr} , #{pageSizeStr}
+    </select>
+
+</mapper>

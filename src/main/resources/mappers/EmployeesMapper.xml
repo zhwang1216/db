@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 员工的Mybatis数据语句 -->
+<mapper namespace="com.zhwang.drug.dao.EmployeesDao">
+
+    <!-- 查询员工表uid，username -->
+    <!-- Employees findByUidUsername() -->
+    <select id="findByUidUsername" resultType="com.zhwang.drug.entity.Employees">
+        select uid,
+               username,
+               is_delete isDelete
+        from t_employees
+    </select>
+
+    <!-- 插入员工数据 -->
+    <!-- Integer insert (Employees emp); -->
+    <insert id="insert">
+        insert into t_employees(username, password, salt, gender, age, phone, email,
+                                avatar, cardBank, card, is_delete, permissions,
+                                created_user, created_time, modified_user, modified_time)
+        values (#{username}, #{password}, #{salt}, #{gender}, #{age}, #{phone}, #{email},
+                #{avatar}, #{cardBank}, #{card}, #{isDelete}, #{permissions}, #{createdUser},
+                #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <!-- 根据phone查询 (进行登录判断)-->
+    <!-- Integer findByPhone(String phone) ; -->
+    <select id="findByPhone" resultType="com.zhwang.drug.entity.Employees">
+        select uid,
+               username,
+               password,
+               salt,
+               is_delete isDelete,
+               permissions,
+               avatar
+        from t_employees
+        where phone = #{phone}
+    </select>
+
+    <!-- 查询员工数据信息 -->
+    <!-- List<Employees> selectEmployees() -->
+    <select id="selectEmployees" resultType="com.zhwang.drug.entity.Employees">
+        select uid,
+               username,
+               password,
+               salt,
+               gender,
+               age,
+               phone,
+               email,
+               avatar,
+               cardBank,
+               card,
+               is_delete     isDelete,
+               permissions,
+               created_user  createdUser,
+               created_time  createdTime,
+               modified_user modifiedUser,
+               modified_time modifiedTime
+        from t_employees
+        order by is_delete
+    </select>
+
+    <!-- 根据id修改信息 -->
+    <!-- Integer uploadInfo(Employees emp); -->
+    <update id="uploadInfo">
+        update
+            t_employees
+        set username=#{username},
+            phone=#{phone},
+            email=#{email},
+            cardBank=#{cardBank},
+            card=#{card},
+            gender=#{gender},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <!-- 根据uid查询员工信息 -->
+    <!-- employees findByUid(String uid) ; -->
+    <select id="findByUid" resultType="com.zhwang.drug.entity.Employees">
+        select uid,
+               username,
+               avatar,
+               gender,
+               age,
+               phone,
+               email,
+               cardBank,
+               card
+        from t_employees
+        where uid = #{uid}
+    </select>
+
+    <!-- 根据uid修改头像 -->
+    <!-- Integer uploadAvata(Integer uid); -->
+    <update id="uploadAvata">
+        update
+            t_employees
+        set avatar=#{avatar}
+        where uid = #{uid}
+    </update>
+
+    <!--  根据uid删除员工 -->
+    <!-- Integer deleteEmployees(Integer uid); -->
+    <delete id="deleteEmployees">
+        delete
+        from t_employees
+        where uid = #{uid}
+    </delete>
+
+    <!-- 将id_delete改为1 -->
+    <!-- Integer deleteEmp(Integer uid); -->
+    <update id="deleteEmp">
+        update
+            t_employees
+        set is_delete=1
+        where uid = #{uid}
+    </update>
+
+    <!-- 根据uid查询密码和颜值 -->
+    <!-- Employees findPassWordByUid(Integer uid); -->
+    <select id="findPassWordByUid" resultType="com.zhwang.drug.entity.Employees">
+        select password,
+               salt,
+               is_delete isDelete
+        from t_employees
+        where uid = #{uid}
+    </select>
+
+    <!-- 根据uid修改新密码 -->
+    <!-- Integer updatePassword(@Param("password")String password,@Param("uid")Integer uid,@Param("username")username,@Param("date")Date date); -->
+    <update id="updatePassword">
+        update
+            t_employees
+        set password=#{password},
+            modified_user=#{username},
+            modified_time=#{date}
+        where uid = #{uid}
+    </update>
+
+    <!-- 根据username模糊查询 -->
+    <!-- Employees findByUsername(String username); -->
+    <select id="findByUsername" resultType="com.zhwang.drug.entity.Employees">
+        select uid,
+               username,
+               avatar,
+               gender,
+               age,
+               phone,
+               email,
+               cardBank,
+               card,
+               is_delete isDelete
+        from t_employees
+        where username
+                  like
+              '%${username}%'
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

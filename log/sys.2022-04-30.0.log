@@ -1,0 +1,22 @@
+2022-04-30 17:41:31,872 INFO (StartupInfoLogger.java:50)- Starting DiemsApplication on ZhwangMac.local with PID 1722 (started by Zhwang in /Users/zhwang/论文/Demo/Drug-sales-and-storage)
+2022-04-30 17:41:31,878 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2022-04-30 17:41:31,878 INFO (SpringApplication.java:679)- The following profiles are active: dev
+2022-04-30 17:41:35,981 INFO (StartupInfoLogger.java:59)- Started DiemsApplication in 4.963 seconds (JVM running for 7.604)
+2022-04-30 17:41:52,704 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-04-30 17:41:52,744 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-04-30 17:41:52,867 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-30 17:41:53,710 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-04-30 17:41:53,711 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-30 17:41:53,807 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-04-30 17:41:53,809 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-30 17:41:53,811 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-04-30 17:41:53,812 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-30 17:41:53,826 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-04-30 17:41:53,828 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-30 17:41:53,834 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-30 17:41:53,841 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-30 17:41:53,851 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-04-30 17:41:53,852 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-30 17:41:53,858 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-30 17:41:53,863 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-04-30 17:41:53,872 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1

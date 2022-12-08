@@ -1,0 +1,11 @@
+
+c	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÑØ‚
+N	java:S106"9Replace this use of System.out or System.err by a logger.(áœŞ÷
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(¤üÑôúÿÿÿÿ
+>	java:S108>")Either remove or fill this block of code.(”ı¾
+t
+java:S2293 "YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºıÿÿÿÿ
+t
+java:S2293&"YReplace the type specification in this constructor call with the diamond operator ("<>").(çšÔåøÿÿÿÿ
+n
+java:S2293@"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%

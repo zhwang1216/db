@@ -1,0 +1,34 @@
+
+Y
+java:S2441<">Make "Customer" serializable or don't store it in the session.(‡ã¤—øÿÿÿÿ
+§
+java:S1130K"‹Remove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException', as it cannot be thrown from method's body.(‚ùıÿÿÿÿ
+R	java:S125¤"<This block of commented-out lines of code should be removed.(Ñšó
+n
+java:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+t
+java:S2293?"YReplace the type specification in this constructor call with the diamond operator ("<>").(õßŠüÿÿÿÿ
+t
+java:S2293V"YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºıÿÿÿÿ
+t
+java:S2293]"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ëæøşÿÿÿÿ
+n
+java:S2293k"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+n
+java:S2293u"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+t
+java:S2293~"YReplace the type specification in this constructor call with the diamond operator ("<>").(õßŠüÿÿÿÿ
+o
+java:S2293ˆ"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+u
+java:S2293¼"YReplace the type specification in this constructor call with the diamond operator ("<>").(˜šÎÈûÿÿÿÿ
+u
+java:S2293Å"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛËàğüÿÿÿÿ
+u
+java:S2293Ñ"YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºıÿÿÿÿ
+u
+java:S2293Ô"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÀÅ«½úÿÿÿÿ
+d
+java:S1192>"IDefine a constant instead of duplicating this literal "username" 6 times.(ôÁÓ™üÿÿÿÿ
+j
+java:S2259¨"NA "NullPointerException" could be thrown; "originalFilename" is nullable here.(óÆ˜ëşÿÿÿÿ

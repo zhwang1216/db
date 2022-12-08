@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 供货商的Mybatis数据语句-->
+<mapper namespace="com.zhwang.drug.dao.LogOperationDao">
+
+    <!-- 根据条件，查询日志信息 -->
+    <!-- List<LogOperation> selectLogOperationForPage(Map<String,Object> map) -->
+    <select id="selectLogOperationForPage" resultType="com.zhwang.drug.entity.LogOperation">
+        select Id,level,category,thread, time,location,note
+        from t_log_operation
+        <where>
+            <if test="category != '' and category != null">
+                and category like '%${category}%'
+            </if>
+            <if test="time != '' and time != null">
+                and time like '%${time}%'
+            </if>
+            <if test="location != '' and location != null">
+                and location like '%${location}%'
+            </if>
+        </where>
+        limit #{beginNo} , #{pageSize}
+    </select>
+
+    <!-- 根据条件，查询日志信息数量 -->
+    <!-- Long selectLogOperationCount(Map<String,Object> map) -->
+    <select id="selectLogOperationCount" resultType="long">
+        select count(Id)
+        from t_log_operation
+        <where>
+            <if test="category != '' and category != null">
+                and category like '%${category}%'
+            </if>
+            <if test="time != '' and time != null">
+                and time like '%${time}%'
+            </if>
+            <if test="location != '' and location != null">
+                and location like '%${location}%'
+            </if>
+        </where>
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+

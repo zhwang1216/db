@@ -1,0 +1,19 @@
+
+§
+java:S1130I"‹Remove the declaration of thrown exception 'com.fasterxml.jackson.core.JsonProcessingException', as it cannot be thrown from method's body.(§öƒÒþÿÿÿÿ
+n
+java:S2293!"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+n
+java:S2293*"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+t
+java:S22930"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ú£žÚýÿÿÿÿ
+o
+java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(žýéÎ
+n
+java:S2293>"YReplace the type specification in this constructor call with the diamond operator ("<>").(Á¹â%
+t
+java:S2293T"YReplace the type specification in this constructor call with the diamond operator ("<>").(™ºöºýÿÿÿÿ
+t
+java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(øæ©’ýÿÿÿÿ
+t
+java:S2293d"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÛËàðüÿÿÿÿ

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加进货</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- 加载js文件-->
+    <script type="text/javascript" src="common/layui/layui.js"></script>
+    <script type="text/javascript" src="js/larry.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
+    <script type="text/javascript" src="common/layui/layui.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.9.1.min.js"></script>
+    <style type="text/css">
+        .container {
+            width: 90%;
+            height: 800px;
+            padding-top: 30px;
+            font-size:15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 style="font-size: 20px; text-align: center;">添加进货信息</h2>
+            <hr>
+        </div>
+        <!-- /header -->
+        <div class="col-sm-12">
+            <form id="form-add" class="form-horizontal" style="margin-top: 30px;">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">入库单据号:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="documentNo"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">入库数量:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="inventoryQuantity"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">入库单价:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="price"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">入库金额:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="inventory"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">入库时间:</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="storageTime"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">药品:</label>
+                    <div class="col-sm-6">
+                        <select id="drg_id" name="drugId" class="form-control" style="height:35px;">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">供货商:</label>
+                    <div class="col-sm-6">
+                        <select id="sup_id" name="supplierId" class="form-control" style="height:35px;">
+                            <option>请选择</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" style="text-align: right;">员工-经办人:</label>
+                    <div class="col-sm-6">
+
+                        <select id="emp_id" name="employeesId" class="form-control" style="height:35px;">
+                            <option>请选择</option>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-2">
+                        <button id="btn-add" type="reset" class="btn btn-primary btn-block">立即提交</button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="reset" class="btn btn-primary btn-block">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/addDrugstock.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 进货Mybatis数据库语句 -->
+
+
+<!-- 进货的Mybatis数据语句 -->
+<!-- namespace：匹配java接口， id:对应的是抽象方法的方法名, parameterType:对应的是方法用到的实体类 #{}:中的名称是参数User类中的属性 -->
+<mapper namespace="com.zhwang.drug.dao.DrugStockDao">
+
+    <!--
+        documentNo, inventoryQuantity, price, inventory, storageTime,
+        drug_id drugId, supplier_id supplierId, employees_id employeesId, is_delete isDelete,
+        created_user createdUser, created_time createdTime, modified_user modifiedUser, modified_time modifiedTime
+     -->
+
+    <!-- 修改进货数据 -->
+    <!-- Integer updateDrugStock(DrugStock drugstock) -->
+
+    <update id="updateDrugStock">
+        update
+            t_drug_stock
+        set documentNo=#{documentNo},
+            inventoryQuantity=#{inventoryQuantity},
+            price=#{price},
+            inventory=#{inventory},
+            storageTime=#{storageTime},
+            drug_id=#{drugId},
+            supplier_id=#{supplierId},
+            employees_id=#{employeesId}
+        where id = #{id}
+    </update>
+
+    <!-- 添加进货清单 -->
+    <!-- Integer insertDrugStock(DrugStock drugstock) -->
+    <insert id="insertDrugStock">
+        insert into t_drug_stock(documentNo, inventoryQuantity, price, inventory, storageTime,
+                                 drug_id, supplier_id, employees_id, is_delete,
+                                 created_user, created_time, modified_user, modified_time)
+        values (#{documentNo}, #{inventoryQuantity}, #{price}, #{inventory}, #{storageTime},
+                #{drugId}, #{supplierId}, #{employeesId}, #{isDelete},
+                #{createdUser}, #{createdTime}, #{modifiedUser}, #{modifiedTime})
+    </insert>
+
+    <!-- 根据入库单号查询是否有重复数据 -->
+    <!-- Integer findBydocumentNo(String documentNo) -->
+    <select id="findBydocumentNo" resultType="java.lang.Integer">
+        select count(id)
+        from t_drug_stock
+        where documentNo = #{documentNo}
+    </select>
+
+    <!-- 查询所有进货数据 -->
+    <!-- List<DrugStock> findAll() -->
+    <select id="findAll" resultType="com.zhwang.drug.entity.DrugStockFindAll">
+        select
+        d.drugName,e.username empName,
+        ds.inventory,ds.inventoryQuantity,
+        ds.price,ds.storageTime,
+        s.username supName,ds.is_delete isDelete,
+        ds.id drugId,ds.documentNo
+        from
+        t_drug_stock ds join t_drug d
+        on ds.drug_id=d.id
+        join t_employees e
+        on ds.employees_id=e.uid
+        join t_supplier s
+        on ds.supplier_id=s.uid
+        <where>
+            <!-- 添加查询条件 -->
+            <if test="documentNo != '' and documentNo != null">
+                and d.drugName like '%${documentNo}%'
+            </if>
+        </where>
+        limit #{pageNoStr} , #{pageSizeStr}
+    </select>
+
+    <!-- 删除某条数据(设置isDelete为1) -->
+    <!-- Integer updateIsDelete(Integer id) -->
+    <update id="updateIsDelete">
+        update
+            t_drug_stock
+        set is_delete    = 1,
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where id = #{id}
+    </update>
+</mapper>

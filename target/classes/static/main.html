@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页面</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css" media="all">
+    <!-- 加载js文件-->
+    <script type="text/javascript" src="common/layui/layui.js"></script>
+    <script type="text/javascript" src="js/larry.js"></script>
+    <script type="text/javascript" src="jsplug/echarts.js"></script>
+    <script type="text/javascript" src="jsplug/echarts.min.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <script src="common/bootstrap/js/jquery.cookie.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<section class="larry-wrapper">
+    <!-- overview -->
+    <div class="row state-overview">
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol userblue layui-anim layui-anim-rotate">
+                    <i class="iconpx-users"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count1"></h1>
+                    </a>
+                    <p>客户数量</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol commred layui-anim layui-anim-rotate"><i class="iconpx-user-add"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count2"></h1>
+                    </a>
+                    <p>供货商数量</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol articlegreen layui-anim layui-anim-rotate">
+                    <i class="iconpx-file-word-o"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count3"></h1>
+                    </a>
+                    <p>药品数量</p>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
+            <section class="panel">
+                <div class="symbol rsswet layui-anim layui-anim-rotate">
+                    <i class="iconpx-check-circle"></i>
+                </div>
+                <div class="value">
+                    <a href="#">
+                        <h1 id="count4"></h1>
+                    </a>
+                    <p>销售数量</p>
+                </div>
+            </section>
+        </div>
+    </div>
+    <!-- overview end -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- 网站信息统计｛SEO数据统计｝ -->
+            <section class="panel">
+                <header class="panel-heading bm0">
+                    <div class="span-title form-group">
+                        <div class="col-sm-1">
+                            <input type="button" class="btn" disabled value="选择年份:" style="height:40px;"/>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="date" class="form-control" name="createdTime" style="height:40px;"/>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="button" class="btn" id="btn-echarts" value="查找" style="height:40px;"/>
+                        </div>
+                    </div>
+                </header>
+                <div class="panel-body laery-seo-box">
+                    <div class="larry-seo-stats" id="larry-seo-stats"></div>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+</section>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

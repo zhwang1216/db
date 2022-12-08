@@ -1,0 +1,23 @@
+
+`
+java:S1858D"E"getPassword" returns a string, there's no need to call "toString()".(§ûáÑúÿÿÿÿ
+7
+java:S1116T"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+r
+java:S2159‚"VRemove this call to "equals"; comparisons between unrelated types always return false.(ØÚœ„ûÿÿÿÿ
+8
+java:S1116ð"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+w
+java:S1488R"\Immediately return this expression instead of assigning it to the temporary variable "list".(¶¤¹Ôúÿÿÿÿ
+q
+java:S1488d"[Immediately return this expression instead of assigning it to the temporary variable "emp".(»ƒ¥½
+z
+java:S1488™"^Immediately return this expression instead of assigning it to the temporary variable "result".(Û“àçøÿÿÿÿ
+u
+java:S1488¢"^Immediately return this expression instead of assigning it to the temporary variable "result".(†ðŽ‹
+z
+java:S1488²"^Immediately return this expression instead of assigning it to the temporary variable "result".(ß”‡Êýÿÿÿÿ
+w
+java:S1488æ"[Immediately return this expression instead of assigning it to the temporary variable "emp".(·‹áåÿÿÿÿÿ
+t
+java:S1488‚"^Immediately return this expression instead of assigning it to the temporary variable "result".(îž°,

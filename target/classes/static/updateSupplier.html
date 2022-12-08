@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/bootstrap/css/bootstrap.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/personal.css" media="all">
+    <!-- 加载js文件-->
+    <script type="text/javascript" src="common/layui/layui.js"></script>
+    <script type="text/javascript" src="js/larry.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="common/bootstrap/js/jquery-1.10.2.min.js"></script>
+    <!-- load css -->
+    <link rel="stylesheet" type="text/css" href="common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" type="text/css" href="common/global.css" media="all">
+    <link rel="stylesheet" type="text/css" href="css/adminstyle.css" media="all">
+    <style type="text/css">
+        .container {
+            width: 90%;
+            height: 800px;
+            padding-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="col-sm-12">
+    <form id="form-change-info" class="form-horizontal " action="" method="post"
+          style="margin-top: 30px;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">供应商:</label>
+            <div class="col-sm-8">
+                <input id="username" type="text" class="form-control" name="username" style="height:40px;"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">联系电话:</label>
+            <div class="col-sm-8">
+                <input id="phone" type="text" class="form-control" name="phone" placeholder="输入手机号码"
+                       style="height:40px;"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">邮箱:</label>
+            <div class="col-sm-8">
+                <input id="email" type="text" class="form-control" name="email" placeholder="输入邮箱"
+                       style="height:40px;"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">供应商地址:</label>
+            <div class="col-sm-8">
+                <input id="address" type="text" class="form-control" name="address" placeholder="输入供应商地址"
+                       style="height:40px;"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">开户行:</label>
+            <div class="col-sm-8">
+                <input id="cardBanke" type="text" class="form-control" name="cardBank" placeholder="输入开户行"
+                       style="height:40px;"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">银行账号:</label>
+            <div class="col-sm-8">
+                <input id="card" type="text" class="form-control" name="card" placeholder="输入银行账号"
+                       style="height:40px;"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label id="isDelete" class="col-sm-2 control-label" style="text-align: right;">是否删除:</label>
+            <div class="col-sm-8"></div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label" style="text-align: right;">教学方法:</label>
+            <div class="col-xs-8">
+                <textarea name="" class="layui-textarea" cols="50" rows="5"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-4">
+                <button type="button" id="btn-change-info"
+                        class="btn btn-primary btn-block">提交
+                </button>
+            </div>
+            <div class="col-sm-4">
+                <button type="reset" class="btn btn-primary btn-block">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- 信息回显 -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        //发出异步请求,并处理结果  需做五步
+        //url:将请求提交到哪里去
+        //data:提交的请求参数,例如 username=root&password=8888
+        //type:提交方式
+        //datatype:服务器端即将响应的数据类型,取值可以是"json","xml"例如服务器端响应的可能是application/json.该属性值应该是json
+        //success:当服务器成功响应时(Http响应码是2xx)的回调函数
+        $.ajax({
+            "url": "/supplier/info",
+            "type": "get",
+            "datatype": "json",
+            "success": function (json) {
+                if (json.state == 200) {
+                    //将服务器响应的数据显示到各控件中
+                    $("#username").val(json.data.username);
+                    $("#phone").val(json.data.phone);
+                    $("#email").val(json.data.email);
+                    $("#address").val(json.data.address);
+                    $("#cardBank").val(json.data.cardBank);
+                    $("#card").val(json.data.card);
+                    var isDelete = json.data.isDelete == 1 ? "已删除" : "未删除";
+                    $("#isDelete").val(isDelete);
+
+                    /* if(json.data.gender==1){
+                        $("#gender-male").attr("checked","checked");
+                    }
+                    if(json.data.gender==0){
+                        $("#gender-female").attr("checked","checked");
+                    } */
+
+                } else {
+                    alert(json.message);
+                    //退出登录
+                }
+            }
+        });
+    });
+</script>
+<!-- 修改信息 -->
+<script type="text/javascript">
+    $("#btn-change-info").click(function () {
+        //发出异步请求,并处理结果  需做五步
+        //url:将请求提交到哪里去
+        //data:提交的请求参数,例如 username=root&password=8888
+        //type:提交方式
+        //datatype:服务器端即将响应的数据类型,取值可以是"json","xml"例如服务器端响应的可能是application/json.该属性值应该是json
+        //success:当服务器成功响应时(Http响应码是2xx)的回调函数
+        $.ajax({
+            "url": "/supplier/change_info",
+            "data": $("#form-change-info").serialize(),
+            "type": "post",
+            "datatype": "json",
+            "success": function (json) {
+                if (json.state == 200) {
+                    alert("修改成功");
+                } else {
+                    alert(json.message);
+                }
+            },
+            //302状态码 触发error的执行
+            "error": function () {
+                alert("您的登录信息已过期,请重新登录")
+                location.href = "login.html";
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+

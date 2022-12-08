@@ -1,0 +1,41 @@
+
+7
+java:S1116?"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116H"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116b"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116k"Remove this empty statement.(ôŸìúÿÿÿÿ
+7
+java:S1116t"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116—"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116¡"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116­"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116¶"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116¾"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116Å"Remove this empty statement.(ôŸìúÿÿÿÿ
+8
+java:S1116ä"Remove this empty statement.(ôŸìúÿÿÿÿ
+t
+java:S22932"YReplace the type specification in this constructor call with the diamond operator ("<>").(¼Â÷ƒûÿÿÿÿ
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼Â÷ƒûÿÿÿÿ
+k	java:S117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‚‹…ğúÿÿÿÿ
+e	java:S117O"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÅÙÅL
+l	java:S117´"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠÍõÿÿÿÿÿ
+2
+java:S1643W"Use a StringBuilder instead.(•øäç
+2
+java:S1643Y"Use a StringBuilder instead.(ªÙƒß
+y
+java:S1488Ÿ"]Immediately return this expression instead of assigning it to the temporary variable "count".(•àıÿÿÿÿ
+s
+java:S1488Í"]Immediately return this expression instead of assigning it to the temporary variable "count".(ˆ€ÿ

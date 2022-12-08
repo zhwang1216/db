@@ -1,0 +1,28 @@
+2022-04-22 16:57:10,254 INFO (StartupInfoLogger.java:50)- Starting DiemsApplication on ZhwangMac.local with PID 2557 (started by Zhwang in /Users/zhwang/论文/Demo/Drug-sales-and-storage)
+2022-04-22 16:57:10,263 DEBUG (StartupInfoLogger.java:53)- Running with Spring Boot v2.1.3.RELEASE, Spring v5.1.5.RELEASE
+2022-04-22 16:57:10,264 INFO (SpringApplication.java:679)- The following profiles are active: dev
+2022-04-22 16:57:16,737 INFO (StartupInfoLogger.java:59)- Started DiemsApplication in 7.842 seconds (JVM running for 12.237)
+2022-04-22 16:57:29,966 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, is_delete isDelete, permissions, avatar from t_employees where phone = ? 
+2022-04-22 16:57:29,990 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 17671041216(String)
+2022-04-22 16:57:30,105 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-22 16:57:31,042 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_customer where is_delete != 1 
+2022-04-22 16:57:31,044 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:31,045 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(uid) from t_supplier where is_delete != 1 
+2022-04-22 16:57:31,046 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:31,075 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug where is_delete != 1 
+2022-04-22 16:57:31,075 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-22 16:57:31,076 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:31,075 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-22 16:57:31,090 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-22 16:57:31,095 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select count(id) from t_drug_sales where is_delete != 1 
+2022-04-22 16:57:31,096 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:31,100 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1
+2022-04-22 16:57:31,148 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select month(created_time) month,count(uid) count from t_customer where is_delete != 5 and year(created_time) like '2022%' group by month (created_time) 
+2022-04-22 16:57:31,149 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:31,161 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 2
+2022-04-22 16:57:33,799 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, password, salt, gender, age, phone, email, avatar, cardBank, card, is_delete isDelete, permissions, created_user createdUser, created_time createdTime, modified_user modifiedUser, modified_time modifiedTime from t_employees order by is_delete 
+2022-04-22 16:57:33,800 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 
+2022-04-22 16:57:33,808 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 3
+2022-04-22 16:57:55,615 DEBUG (BaseJdbcLogger.java:159)- ==>  Preparing: select uid, username, avatar, gender, age, phone, email, cardBank, card from t_employees where uid = ? 
+2022-04-22 16:57:55,616 DEBUG (BaseJdbcLogger.java:159)- ==> Parameters: 2(Integer)
+2022-04-22 16:57:55,627 DEBUG (BaseJdbcLogger.java:159)- <==      Total: 1

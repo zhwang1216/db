@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<!-- 供货商的Mybatis数据语句-->
+<mapper namespace="com.zhwang.drug.dao.SupplierDao">
+
+    <!-- 查询供货商表的uid,username -->
+    <!-- Supplier findByUidUsername() -->
+    <select id="findByUidUsername" resultType="com.zhwang.drug.entity.Supplier">
+        select uid, username
+        from t_supplier
+        where is_delete != 1
+    </select>
+
+    <!-- 插入供货商数据 -->
+    <!-- Integer insert(Supplier supplier) 方法声明语句-->
+    <insert id="insert">
+        insert into t_supplier(username,
+                               phone,
+                               email,
+                               address,
+                               cardBank,
+                               card,
+                               is_delete,
+                               created_user,
+                               created_time,
+                               modified_user,
+                               modified_time)
+        values (#{username},
+                #{phone},
+                #{email},
+                #{address},
+                #{cardBank},
+                #{card},
+                #{isDelete},
+                #{createdUser},
+                #{createdTime},
+                #{modifiedUser},
+                #{modifiedTime})
+
+    </insert>
+
+    <!-- 根据手机号查询供货商数据-->
+    <!-- Supplier findByPhone() -->
+    <select id="findByPhone" resultType="com.zhwang.drug.entity.Supplier">
+        select username,
+               phone,
+               email
+        from t_supplier
+        where phone = #{phone}
+          and is_delete != 1
+    </select>
+
+    <!-- 根据邮箱查询供货商数据-->
+    <!-- Supplier findByEmail() -->
+    <select id="findByEmail" resultType="com.zhwang.drug.entity.Supplier">
+        select username,
+               phone,
+               email
+        from t_supplier
+        where email = #{email}
+          and is_delete != 1
+    </select>
+
+
+    <!-- 根据供应商id查找供应商数据 -->
+    <!-- Supplier findByUid(Integer uid) 方法声明语句-->
+    <select id="findByUid" resultType="com.zhwang.drug.entity.Supplier">
+        select uid,
+               is_delete isDelete,
+               username,
+               phone,
+               email,
+               address,
+               cardBank,
+               card
+        from t_supplier
+        where uid = #{uid}
+    </select>
+
+    <select id="findAll" resultType="com.zhwang.drug.entity.Supplier">
+        select uid,
+               username,
+               phone,
+               email,
+               address,
+               cardBank,
+               card,
+               is_delete isDelete,
+               created_user,
+               created_time,
+               modified_user,
+               modified_time
+        from t_supplier
+    </select>
+
+    <!-- 根据供应商id判断，该条数据是否被引用 -->
+    <!-- Integer deleteBycategoryId(Integer categoryId); -->
+    <select id="deleteSupplierId" resultType="java.lang.Integer">
+        select count(*)
+        from t_supplier A,
+             t_drug_stock B
+        where A.uid = B.supplier_id
+          and A.uid = #{uid}
+    </select>
+
+    <!-- 修改供应商信息 -->
+    <!-- Integer updateInfo(Supplier supplier) 方法声明语句 -->
+    <update id="updateInfo">
+        update
+            t_supplier
+        set phone=#{phone},
+            address=#{address},
+            email=#{email},
+            cardBank=#{cardBank},
+            card=#{card},
+            modified_user=#{modifiedUser},
+            modified_time=#{modifiedTime}
+        where uid = #{uid}
+    </update>
+
+    <update id="updateIsDelete">
+        update t_supplier
+        set is_delete=1
+        where uid = #{uid}
+    </update>
+
+    <!-- 查询供应商所有数据 -->
+    <!-- List<Supplier> selectSupplierForPage() -->
+    <select id="selectSupplierForPage" resultType="com.zhwang.drug.entity.Supplier">
+        select
+        uid,username,phone,
+        email,address,cardBank,
+        card,is_delete isDelete
+        from
+        t_supplier where is_delete!=1
+        <if test="username != '' and username != null">
+            and username like '${username}%'
+        </if>
+        <if test="phone != '' and phone != null">
+            and phone like '${phone}%'
+        </if>
+        <if test="email != '' and email != null">
+            and email like '${email}%'
+        </if>
+        limit #{beginNo} , #{pageSize}
+    </select>
+
+    <!-- 根据条件查询药品类别总条数 -->
+    <!-- Long selectCountSupplier(Map<String,Object> map); -->
+    <select id="selectCountSupplier" resultType="long">
+        select count(*)
+        from t_supplier where is_delete!=1
+        <if test="username != '' and username != null">
+            and username like '${username}%'
+        </if>
+        <if test="phone != '' and phone != null">
+            and phone like '${phone}%'
+        </if>
+        <if test="email != '' and email != null">
+            and email like '${email}%'
+        </if>
+    </select>
+
+    <!-- 查询供货商数量 -->
+    <!-- Long selectIdCount(); -->
+    <select id="selectIdCount" resultType="java.lang.Long">
+        select count(uid)
+        from t_supplier
+        where is_delete != 1
+    </select>
+
+
+</mapper>
+
+
+
+
+
+
+
+

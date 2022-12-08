@@ -1,0 +1,9 @@
+
+o	java:S116"ZRename this field "LogOperationDao" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÞëÖ
+7
+java:S1116/"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+7
+java:S11165"Remove this empty statement.(ôŸŽìúÿÿÿÿ
+o
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(¥§ØÍ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥§ØÍ
